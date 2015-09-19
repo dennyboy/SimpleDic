@@ -8,7 +8,7 @@ import java.util.HashMap;
 /**
  * Created by Dennis on 9/18/2015.
  */
-public class DictionaryDefs {
+public class DictionaryDefs implements RemoteDictionaryDefs {
     private HashMap<String,Dictionary> dictionaries;
 
     public DictionaryDefs() {
@@ -33,6 +33,7 @@ public class DictionaryDefs {
         dictionaries.put("Daum-Eng",daumEng);
     }
 
+    @Override
     public HashMap<String, Dictionary> getDictionaries(){
         return dictionaries;
     }
