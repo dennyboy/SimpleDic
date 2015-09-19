@@ -8,7 +8,7 @@ import java.util.HashMap;
 /**
  * Created by Dennis on 9/18/2015.
  */
-public class DictionaryDefs implements RemoteDictionaryDefs {
+public class DictionaryDefs extends RemoteDictionaryDefs {
     private HashMap<String,Dictionary> dictionaries;
 
     public DictionaryDefs() {

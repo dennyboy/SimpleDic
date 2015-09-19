@@ -1,7 +1,7 @@
 package gui;
 
 import core.Dictionary;
-import core.DictionaryDefs;
+import core.RemoteDictionariesLoader;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,7 +14,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import utilities.Misc;
 
@@ -38,7 +37,7 @@ public class MainForm extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        dictionaries = new DictionaryDefs().getDictionaries();
+        dictionaries = new RemoteDictionariesLoader().getDictionaries();
 
         primaryStage.setScene(getMainScene());
         primaryStage.setTitle("SimpleDic");
