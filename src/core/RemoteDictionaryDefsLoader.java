@@ -11,7 +11,7 @@ import java.util.Iterator;
 /**
  * Created by Dennis on 9/19/2015.
  */
-public class RemoteDictionariesLoader extends ClassLoader {
+public class RemoteDictionaryDefsLoader extends ClassLoader {
 
     final public static String REMOTE_CLASS = "https://github.com/dennyboy/SimpleDic/blob/master/remote/DictionaryDefs.class?raw=true";
 
@@ -27,6 +27,7 @@ public class RemoteDictionariesLoader extends ClassLoader {
             Class<?> regeneratedClass = this.defineClass("core.DictionaryDefs",rawBytes, 0, rawBytes.length);
 
              dictionaries = (HashMap) regeneratedClass.getMethod("getDictionaries",null).invoke(regeneratedClass.newInstance(),null);
+            System.out.println("Remote Dictionaries Loaded Successfully");
 
         } catch (Exception e) {
             DictionaryDefs dictionaryDefs= new DictionaryDefs();
