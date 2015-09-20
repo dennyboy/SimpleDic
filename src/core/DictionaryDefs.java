@@ -28,12 +28,19 @@ public class DictionaryDefs extends RemoteDictionaryDefs {
         {Document document = Jsoup.parse(html);
             return document.getElementsByClass("trans");});
 
+        Dictionary spanishDict = new Dictionary("http://www.spanishdict.com/translate/","");
+        spanishDict.setDictionaryParser((html)->
+        {Document document = Jsoup.parse(html);
+            return document.getElementsByClass("dictionary-neodict-translation-translation click-to-translate-section");});
+
+
 
         dictionaries = new HashMap<String, Dictionary>();
         dictionaries.put("Naver", naver);
         dictionaries.put("Daum-Kor",daumKor);
         dictionaries.put("Daum-Eng",daumEng);
         dictionaries.put("Camb-Kor",cambKor);
+        dictionaries.put("SpanishDict",spanishDict);
     }
 
     @Override

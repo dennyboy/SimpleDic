@@ -33,8 +33,6 @@ public class MainForm extends Application{
     private ComboBox dictionarySelector;
 
 
-
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         dictionaries = new RemoteDictionaryDefsLoader().getDictionaries();
@@ -57,7 +55,7 @@ public class MainForm extends Application{
         gridPane.setStyle("-fx-font: 16px \"Times New Roman\";");
 
         dictionarySelector = getDictionarySelector();
-        dictionarySelector.setPrefSize(100,25);
+        dictionarySelector.setPrefSize(125,25);
 
         searchButton = new Button("Search");
         searchButton.setPrefSize(100, 25);
@@ -69,7 +67,7 @@ public class MainForm extends Application{
             {if(keyPressed.getCode().equals(KeyCode.ENTER)){Misc.click(searchButton);}});
 
         resultsBox = new TextArea();
-        resultsBox.setPrefSize(500,400);
+        resultsBox.setPrefSize(525,400);
 
         gridPane.add(searchBox,0,0);
         gridPane.add(searchButton,1,0);
@@ -77,7 +75,7 @@ public class MainForm extends Application{
         gridPane.add(resultsBox, 0, 1);
         gridPane.setColumnSpan(resultsBox,3);
 
-        Scene scene = new Scene(gridPane,500,450);
+        Scene scene = new Scene(gridPane,525,450);
         return scene;
     }
 
@@ -94,8 +92,8 @@ public class MainForm extends Application{
         results = dictionaries.get(dictionarySelector.getValue()).search(searchTerm).iterator();
         while(results.hasNext()){
         result += results.next() + "\n";}
-
         resultsBox.setText(result);
+
     }
 
     private ComboBox<String> getDictionarySelector(){
