@@ -26,13 +26,12 @@ public class RemoteDictionaryDefsLoader extends ClassLoader {
             inputStream.read(rawBytes);
             Class<?> regeneratedClass = this.defineClass("core.DictionaryDefs",rawBytes, 0, rawBytes.length);
 
-             dictionaries = (HashMap) regeneratedClass.getMethod("getDictionaries",null).invoke(regeneratedClass.newInstance(),null);
+            dictionaries = (HashMap) regeneratedClass.getMethod("getDictionaries",null).invoke(regeneratedClass.newInstance(),null);
             System.out.println("Remote Dictionaries Loaded Successfully");
 
         } catch (Exception e) {
             DictionaryDefs dictionaryDefs= new DictionaryDefs();
             dictionaries = dictionaryDefs.getDictionaries();
-            e.printStackTrace();
         }
 
         return dictionaries;

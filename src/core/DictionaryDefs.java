@@ -2,12 +2,8 @@ package core;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-
 import java.util.HashMap;
 
-/**
- * Created by Dennis on 9/18/2015.
- */
 public class DictionaryDefs extends RemoteDictionaryDefs {
     private HashMap<String,Dictionary> dictionaries;
 
@@ -27,10 +23,17 @@ public class DictionaryDefs extends RemoteDictionaryDefs {
         {Document document = Jsoup.parse(html);
             return document.getElementsByClass("txt_means_KUKE");});
 
+        Dictionary cambKor = new Dictionary("http://dictionary.cambridge.org/dictionary/english-korean/","");
+        cambKor.setDictionaryParser((html)->
+        {Document document = Jsoup.parse(html);
+            return document.getElementsByClass("trans");});
+
+
         dictionaries = new HashMap<String, Dictionary>();
         dictionaries.put("Naver", naver);
         dictionaries.put("Daum-Kor",daumKor);
         dictionaries.put("Daum-Eng",daumEng);
+        dictionaries.put("Camb-Kor",cambKor);
     }
 
     @Override
